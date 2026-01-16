@@ -16,7 +16,13 @@ def teacher_signup(data: TeacherAuth, db: Session = Depends(get_db)):
     )
     db.add(teacher)
     db.commit()
-    return {"message": "Teacher registered"}
+    db.refresh(teacher)
+    token = create_token({"role": "teacher", "teacher_id": teacher.id})
+
+    return {
+        "message": "Teacher registered",
+        "access_token": token
+    }
 
 @router.post("/login")
 def teacher_login(data: TeacherAuth, db: Session = Depends(get_db)):
