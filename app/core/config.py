@@ -1,10 +1,14 @@
-import os
 from dotenv import load_dotenv
+from pydantic_settings import BaseSettings
 
 load_dotenv()
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-DATABASE_URL = os.getenv("DATABASE_URL")
+class Settings(BaseSettings):
+    SECRET_KEY: str
+    DATABASE_URL: str
+    ALGORITHM: str
 
-if not SECRET_KEY:
-    raise RuntimeError("SECRET_KEY is not set in .env")
+    class Config:
+        env_file = ".env"
+
+settings = Settings()
