@@ -1,5 +1,10 @@
 from pydantic import BaseModel, EmailStr
 
-class TeacherAuth(BaseModel):
+class TeacherSignup(BaseModel):
+    name: str
+    email: EmailStr
+    password: str
+
+class TeacherLogin(BaseModel):
     email: EmailStr
     password: str
