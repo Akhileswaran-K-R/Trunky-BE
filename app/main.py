@@ -1,8 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api import auth, teacher, student,evaluation,assessment
+from app.db.base import Base
+from app.db.session import engine
 
 app = FastAPI(title="Learning Disability Screening API")
+
+@app.on_event("startup")
+def on_startup():
+    Base.metadata.create_all(bind=engine)
 
 app.add_middleware(
     CORSMiddleware,
