@@ -6,11 +6,8 @@ app = FastAPI(title="Learning Disability Screening API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://your-frontend-domain.com",
-        "http://localhost:3000"  # dev
-    ],
-    allow_credentials=False,  # important
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
