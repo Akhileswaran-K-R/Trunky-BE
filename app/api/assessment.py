@@ -14,7 +14,7 @@ from fastapi import Depends, HTTPException
 from datetime import datetime
 import json
 
-@router.post("/level/{level}")
+@router.post("/{level}")
 def get_questions(
     level: int,
     student=Depends(get_current_student)
