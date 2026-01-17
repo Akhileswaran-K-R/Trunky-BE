@@ -2,7 +2,7 @@ import json
 
 def question_prompt(level, age):
     return f"""
-Create 4 fun questions for a {age}-year-old child.
+Create 4 NIMHANS Specific Learning Battery questions for a {age}-year-old child.
 Level: {level}
 
 Return ONLY JSON:
