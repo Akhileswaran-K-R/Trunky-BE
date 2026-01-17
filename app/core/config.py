@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     DATABASE_URL: str
     ALGORITHM: str
+    GEMINI_API_KEY: str
 
     class Config:
         env_file = ".env"
